@@ -16,6 +16,8 @@ public:
 	// Public Player Methods
 	int GetScore();
 	void ChangeScore(int _changeBy);
+	bool KeyPickedUp;
+	bool IsKeyPickedUp();
 
 private:
 

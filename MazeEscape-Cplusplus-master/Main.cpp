@@ -14,6 +14,7 @@
 #include "Baddy.h"
 #include "Score.h"
 #include "Coin.h"
+#include "Key.h"
 
 // The main() Function - entry point for our program
 int main()
@@ -45,6 +46,8 @@ int main()
 	Player ourPlayer;
 	Coin ourCoin;
 	Score ourScore;
+	Key ourKey;
+	Exit ourExit;
 	ourScore.SetPlayer(&ourPlayer);
 
 	// -----------------------------------------------
@@ -86,7 +89,9 @@ int main()
 			ourCoin.Update(frameTime);
 		if (ourScore.IsActive())
 			ourScore.Update(frameTime);
-
+		if (ourExit.IsActive())
+			ourExit.Update(frameTime);
+		
 
 		// -----------------------------------------------
 		// Collision Section
@@ -100,6 +105,17 @@ int main()
 				ourCoin.Collide(ourPlayer);
 			}
 		}
+		if (ourKey.IsActive() && ourPlayer.IsActive())
+		{
+			if (ourKey.GetBounds().intersects(ourPlayer.GetBounds()))
+			{
+				ourKey.Collide(ourPlayer);
+				ourExit.IsDoorOpen();
+				
+			}
+		}
+		
+		
 
 
 		// -----------------------------------------------
@@ -115,6 +131,10 @@ int main()
 			ourCoin.Draw(gameWindow);
 		if (ourPlayer.IsActive())
 			ourPlayer.Draw(gameWindow);
+		if (ourKey.IsActive())
+			ourKey.Draw(gameWindow);
+		if (ourExit.IsActive())
+			ourExit.Draw(gameWindow);
 
 		// Draw UI to the window
 		gameWindow.setView(gameWindow.getDefaultView());
