@@ -27,6 +27,15 @@ void GameObject::Collide(GameObject& _collider)
 
 }
 
+void GameObject::SetPosition(sf::Vector2f _position)
+{
+
+}
+void GameObject::SetPosition(float _x, float _y)
+{
+
+}
+
 bool GameObject::IsActive()
 {
 	return m_active;

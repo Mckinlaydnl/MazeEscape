@@ -12,7 +12,7 @@ Exit::Exit()
 	
 		
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorClosed.png"));
-			m_sprite.setPosition(600.0f, 600.0f);
+			
 		
 	
 	
@@ -35,7 +35,7 @@ void Exit::Update(sf::Time _frameTime)
 		if (DoorOpen == true)
 		{
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/DoorOpen.png"));
-			m_sprite.setPosition(600.0f, 600.0f);
+			
 		}
 	
 	
